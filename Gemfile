@@ -69,3 +69,5 @@ group :test do
 end
 
 gem "readyset", "~> 0.1.1"
+
+gem "figaro", "~> 1.2"
