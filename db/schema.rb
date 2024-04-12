@@ -10,13 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 0) do
-  create_schema "readyset"
-
+ActiveRecord::Schema[7.1].define(version: 2024_04_10_230225) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "title_basics", primary_key: "tconst", id: :text, force: :cascade do |t|
+  create_table "movies", force: :cascade do |t|
     t.text "titletype"
     t.text "primarytitle"
     t.text "originaltitle"
@@ -25,11 +23,15 @@ ActiveRecord::Schema[7.1].define(version: 0) do
     t.integer "endyear"
     t.integer "runtimeminutes"
     t.text "genres"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "title_ratings", primary_key: "tconst", id: :text, force: :cascade do |t|
+  create_table "ratings", force: :cascade do |t|
     t.decimal "averagerating"
     t.integer "numvotes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

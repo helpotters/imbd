@@ -1,4 +1,29 @@
-<div>
-  <h1 class="font-bold text-4xl">Example#index</h1>
-  <p>Find me in app/views/example/index.html.erb</p>
-</div>
+<!-- app/views/title_basics/index.html.erb -->
+
+<h1>Title Basics</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Type</th>
+      <th>Start Year</th>
+      <th>End Year</th>
+      <th>Genre</th>
+      <th>Average Rating</th>
+      <th>Number of Votes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @title_basics.each do |title_basic| %>
+      <tr>
+        <td><%= title_basic.primarytitle %></td>
+        <td><%= title_basic.titletype %></td>
+        <td><%= title_basic.startyear %></td>
+        <td><%= title_basic.endyear %></td>
+        <td><%= title_basic.genres %></td>
+        <td><%= title_basic.title_rating&.averagerating %></td>
+        <td><%= title_basic.title_rating&.numvotes %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
