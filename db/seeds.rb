@@ -5,6 +5,7 @@ require 'faker'
 
 # Number of records to create
 number_of_records = 100000  # You can increase this number based on your needs
+puts "Generating data..."
 
 movies = []
 ratings = []
@@ -12,10 +13,10 @@ number_of_records.times do |i|
   movie = {
         id: i,
         titletype: Faker::Book.genre,
-        primarytitle: Faker::Book.title,
+        primarytitle: Faker::Movie.title,
         originaltitle: Faker::Book.title,
         isadult: [true, false].sample,
-        startyear: Faker::Number.between(from: 1900, to: 2020),
+        startyear: Faker::Number.between(from: 1970, to: 2020),
         endyear: Faker::Number.between(from: 1900, to: 2020),
         runtimeminutes: Faker::Number.between(from: 30, to: 180),
         genres: Faker::Book.genre
@@ -27,6 +28,8 @@ number_of_records.times do |i|
       movie_id: i
   }
 end
+
+puts "Upserting #{number_of_records} to database..."
 
 Movie.upsert_all movies
 Rating.upsert_all ratings
