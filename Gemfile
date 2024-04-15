@@ -73,3 +73,5 @@ gem "readyset", "~> 0.1.1"
 gem "figaro", "~> 1.2"
 
 gem "tailwindcss-rails", "~> 2.4"
+
+gem "faker", "~> 3.3"

@@ -1,9 +1,30 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# db/seeds.rb
+
+# Ensure you have required the Faker gem
+require 'faker'
+
+# Number of records to create
+number_of_records = 1000  # You can increase this number based on your needs
+
+ActiveRecord::Base.transaction do
+  number_of_records.times do |i|
+    movie = Movie.create(
+      titletype: Faker::Book.genre,
+      primarytitle: Faker::Book.title,
+      originaltitle: Faker::Book.title,
+      isadult: [true, false].sample,
+      startyear: Faker::Number.between(from: 1900, to: 2020),
+      endyear: Faker::Number.between(from: 1900, to: 2020),
+      runtimeminutes: Faker::Number.between(from: 30, to: 180),
+      genres: Faker::Book.genre
+    )
+
+    Rating.create(
+      averagerating: Faker::Number.decimal(l_digits: 1, r_digits: 1),
+      numvotes: Faker::Number.between(from: 1, to: 10000),
+      movie_id: movie.id
+    )
+  end
+end
+
+puts "Created #{number_of_records} records in the database."
