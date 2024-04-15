@@ -4,25 +4,26 @@
   <table class="w-full table table-xs table-zebra">
     <thead>
     <tr>
+      <th>ID</th>
       <th>Title</th>
-      <th>Type</th>
-      <th>Start Year</th>
-      <th>End Year</th>
+      <th>Release Year</th>
+      <th>Runtime</th>
       <th>Genre</th>
-      <th>Average Rating</th>
-      <th>Number of Votes</th>
+      <th>Average Rating ⭐</th>
     </tr>
   </thead>
     <tbody>
       <% @movies.each do |movie| %>
         <tr>
+          <td><%= movie.id.to_i + 1 %></td>
           <td><%= movie.primarytitle %></td>
-          <td><%= movie.titletype %></td>
           <td><%= movie.startyear %></td>
-          <td><%= movie.endyear %></td>
+          <td><%= movie.runtimeminutes%>min</td>
           <td><%= movie.genres %></td>
-          <td><%= movie.rating&.averagerating %></td>
-          <td><%= movie.rating&.numvotes %></td>
+          <td>
+            <%= movie.rating&.averagerating %>
+            <span class="text-slate-500">(<%= movie.rating&.numvotes %> votes)</span>
+          </td>
         </tr>
       <% end %>
     </tbody>
