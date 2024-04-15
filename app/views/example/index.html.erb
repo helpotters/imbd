@@ -1,7 +1,8 @@
 <!-- app/views/title_basics/index.html.erb -->
-<h1>IMBD Table</h1>
-<table>
-  <thead>
+<div class="w-full overflow-x-auto">
+  <%= paginate @movies, window: 0, left: 1, right: 1 %>
+  <table class="w-full table table-xs table-zebra">
+    <thead>
     <tr>
       <th>Title</th>
       <th>Type</th>
@@ -12,19 +13,18 @@
       <th>Number of Votes</th>
     </tr>
   </thead>
-  <tbody>
-    <% @movies.each do |movie| %>
-      <tr>
-        <td><%= movie.primarytitle %></td>
-        <td><%= movie.titletype %></td>
-        <td><%= movie.startyear %></td>
-        <td><%= movie.endyear %></td>
-        <td><%= movie.genres %></td>
-        <td><%= movie.rating&.averagerating %></td>
-        <td><%= movie.rating&.numvotes %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= paginate @movies %>
+    <tbody>
+      <% @movies.each do |movie| %>
+        <tr>
+          <td><%= movie.primarytitle %></td>
+          <td><%= movie.titletype %></td>
+          <td><%= movie.startyear %></td>
+          <td><%= movie.endyear %></td>
+          <td><%= movie.genres %></td>
+          <td><%= movie.rating&.averagerating %></td>
+          <td><%= movie.rating&.numvotes %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
