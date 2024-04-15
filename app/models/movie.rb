@@ -3,4 +3,6 @@ class Movie < ApplicationRecord
 
   # Association with TitleRating
   has_one :rating, dependent: :destroy
+
+  paginates_per 50
 end

@@ -1,5 +1,5 @@
 class ExampleController < ApplicationController
   def index
-    @title_basics = Movie.includes(:rating).all
+    @movies = Movie.includes(:rating).page params[:page]
   end
 end

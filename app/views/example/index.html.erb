@@ -1,6 +1,5 @@
 <!-- app/views/title_basics/index.html.erb -->
-
-<h1>Title Basics</h1>
+<h1>IMBD Table</h1>
 <table>
   <thead>
     <tr>
@@ -14,16 +13,18 @@
     </tr>
   </thead>
   <tbody>
-    <% @title_basics.each do |title_basic| %>
+    <% @movies.each do |movie| %>
       <tr>
-        <td><%= title_basic.primarytitle %></td>
-        <td><%= title_basic.titletype %></td>
-        <td><%= title_basic.startyear %></td>
-        <td><%= title_basic.endyear %></td>
-        <td><%= title_basic.genres %></td>
-        <td><%= title_basic.title_rating&.averagerating %></td>
-        <td><%= title_basic.title_rating&.numvotes %></td>
+        <td><%= movie.primarytitle %></td>
+        <td><%= movie.titletype %></td>
+        <td><%= movie.startyear %></td>
+        <td><%= movie.endyear %></td>
+        <td><%= movie.genres %></td>
+        <td><%= movie.rating&.averagerating %></td>
+        <td><%= movie.rating&.numvotes %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @movies %>
